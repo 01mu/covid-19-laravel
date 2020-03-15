@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'HomeController@index');
+
+Route::group(['middleware' => 'cors'], function ()
+{
+    Route::get('/country/{country}', 'CasesController@getCountry');
+    Route::get('/daily/{type}', 'DailyController@getDaily');
+    Route::get('/info', 'InfoController@getInfo');
 });
