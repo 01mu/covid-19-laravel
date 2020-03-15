@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Covid\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\DailyModel;
+use Covid\Models\DailyModel;
 
 class DailyController extends Controller
 {

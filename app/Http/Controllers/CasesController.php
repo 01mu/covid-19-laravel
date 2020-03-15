@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Covid\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\CasesModel;
+use Covid\Models\CasesModel;
 
 class CasesController extends Controller
 {

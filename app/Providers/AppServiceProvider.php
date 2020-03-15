@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Covid\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Covid\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\KeyValueModel;
+use Covid\Models\KeyValueModel;
 
 class InfoController extends Controller
 {
