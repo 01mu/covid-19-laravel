@@ -16,4 +16,20 @@ class CasesModel extends Model
             ->orderBy('timestamp', 'ASC')
             ->get();
     }
+
+    public function getCountries() {
+        $latest = CasesModel::select('timestamp')
+            ->orderBy('timestamp', 'DESC')
+            ->limit(1)
+            ->get()[0]['timestamp'];
+
+        $v = CasesModel::select('country', 'confirmed', 'deaths',
+            'recovered', 'new_confirmed', 'new_deaths', 'new_recovered',
+            'cfr')
+            ->orderBy('confirmed', 'DESC')
+            ->where('timestamp', '=', $latest)
+            ->get();
+
+        return $v;
+    }
 }

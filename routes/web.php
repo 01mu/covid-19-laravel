@@ -20,4 +20,5 @@ Route::group(['middleware' => 'cors'], function ()
     Route::get('/country/{country}', 'CasesController@getCountry');
     Route::get('/daily/{type}', 'DailyController@getDaily');
     Route::get('/info', 'InfoController@getInfo');
+    Route::get('/countries', 'CasesController@getCountries');
 });

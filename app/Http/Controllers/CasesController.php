@@ -13,4 +13,10 @@ class CasesController extends Controller
 
         echo json_encode($cm->getCountry($country));
     }
+
+    public function getCountries() {
+        $cm = new CasesModel;
+
+        echo json_encode($cm->getCountries());
+    }
 }
