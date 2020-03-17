@@ -8,9 +8,13 @@ use Covid\Models\DailyModel;
 
 class DailyController extends Controller
 {
-    public function getDaily($type) {
+    public function getDaily($type, $nth) {
         $dm = new DailyModel;
 
-        echo json_encode($dm->getDaily($type));
+        if(!$nth) {
+            $nth = 1;
+        }
+
+        echo json_encode($dm->getDaily($type)->nth($nth));
     }
 }

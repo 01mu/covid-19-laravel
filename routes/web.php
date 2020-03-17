@@ -17,8 +17,8 @@ Route::get('/', 'HomeController@index');
 
 Route::group(['middleware' => 'cors'], function ()
 {
-    Route::get('/country/{country}', 'CasesController@getCountry');
-    Route::get('/daily/{type}', 'DailyController@getDaily');
+    Route::get('/country/{country}/{nth}', 'CasesController@getCountry');
+    Route::get('/daily/{type}/{nth}', 'DailyController@getDaily');
     Route::get('/info', 'InfoController@getInfo');
     Route::get('/countries', 'CasesController@getCountries');
 });
