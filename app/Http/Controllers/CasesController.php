@@ -11,7 +11,7 @@ class CasesController extends Controller
     public function getCountry($country, $nth) {
         $cm = new CasesModel;
 
-        if(!$nth) {
+        if(!$nth || !is_numeric($nth)) {
             $nth = 1;
         }
 
