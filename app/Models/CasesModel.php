@@ -10,7 +10,7 @@ class CasesModel extends Model
 
     public function getCountry($country) {
         return CasesModel::select('timestamp', 'confirmed', 'deaths',
-            'recovered', 'new_confirmed', 'new_deaths', 'new_recovered',
+            'new_confirmed', 'new_deaths',
             'cfr')
             ->where('country', '=', $country)
             ->orderBy('timestamp', 'ASC')
@@ -24,7 +24,7 @@ class CasesModel extends Model
             ->get()[0]['timestamp'];
 
         $v = CasesModel::select('country', 'confirmed', 'deaths',
-            'recovered', 'new_confirmed', 'new_deaths', 'new_recovered',
+            'new_confirmed', 'new_deaths',
             'cfr')
             ->orderBy('confirmed', 'DESC')
             ->where('timestamp', '=', $latest)
