@@ -20,10 +20,10 @@ class Cases extends Migration
             $table->integer('timestamp')->nullable();
             $table->integer('confirmed')->nullable();
             $table->integer('deaths')->nullable();
-            $table->integer('recovered')->nullable();
+            //$table->integer('recovered')->nullable();
             $table->integer('new_confirmed')->nullable();
             $table->integer('new_deaths')->nullable();
-            $table->integer('new_recovered')->nullable();
+            //$table->integer('new_recovered')->nullable();
             $table->integer('instance')->nullable();
 
         });
