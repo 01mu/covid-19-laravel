@@ -4,27 +4,27 @@ namespace Covid\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CasesModel extends Model
+class USCasesModel extends Model
 {
-    protected $table = 'cases';
+    protected $table = 'cases_us';
 
-    public function getCountry($country) {
-        return CasesModel::select('timestamp', 'confirmed', 'deaths',
+    public function getState($state) {
+        return USCasesModel::select('timestamp', 'confirmed', 'deaths',
             'new_confirmed', 'new_deaths', 'recovered', 'new_recovered',
             'cfr', 'new_confirmed_per', 'new_deaths_per', 'new_recovered_per',
             'confirmed_per', 'deaths_per', 'recovered_per')
-            ->where('country', '=', $country)
+            ->where('state', '=', $state)
             ->orderBy('timestamp', 'ASC')
             ->get();
     }
 
-    public function getCountries() {
-        $latest = CasesModel::select('timestamp')
+    public function getStates() {
+        $latest = USCasesModel::select('timestamp')
             ->orderBy('timestamp', 'DESC')
             ->limit(1)
             ->get()[0]['timestamp'];
 
-        $v = CasesModel::select('country', 'confirmed', 'deaths',
+        $v = USCasesModel::select('state', 'confirmed', 'deaths',
             'new_confirmed', 'new_deaths', 'recovered', 'new_recovered',
             'cfr', 'new_confirmed_per', 'new_deaths_per', 'new_recovered_per',
             'confirmed_per', 'deaths_per', 'recovered_per')
