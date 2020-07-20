@@ -20,7 +20,8 @@ Route::group(['middleware' => 'cors'], function ()
     Route::get('/us/{state}/{nth}', 'USCasesController@getState');
     Route::get('/country/{country}/{nth}', 'CasesController@getCountry');
     Route::get('/daily/{type}/{nth}', 'DailyController@getDaily');
+    Route::get('/today', 'DailyController@getTodayPage');
     Route::get('/info', 'InfoController@getInfo');
-    Route::get('/countries', 'CasesController@getCountries');
+    Route::get('/countries/', 'CasesController@getCountries');
     Route::get('/states', 'USCasesController@getStates');
 });

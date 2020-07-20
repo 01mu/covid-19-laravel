@@ -5,6 +5,8 @@ namespace Covid\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Covid\Models\DailyModel;
+use Covid\Models\CasesModel;
+use Covid\Models\USCasesModel;
 
 class DailyController extends Controller
 {
@@ -16,5 +18,18 @@ class DailyController extends Controller
         }
 
         echo json_encode($dm->getDaily($type)->nth($nth));
+    }
+
+    public function getTodayPage(){
+        $r = [];
+
+        $cm = new CasesModel;
+        $us = new USCasesModel;
+
+        $r['individual'] = $cm->getUSandGlobal();
+        $r['global'] = $cm->getTopForDaily();
+        $r['united_states'] = $us->getTopForDaily();
+
+        echo json_encode($r);
     }
 }
