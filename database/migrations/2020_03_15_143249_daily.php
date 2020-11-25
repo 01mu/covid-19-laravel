@@ -13,9 +13,11 @@ class Daily extends Migration
      */
     public function up()
     {
-        $table->text('type')->nullable();
-        $table->integer('timestamp')->nullable();
-        $table->integer('value')->nullable();
+        Schema::create('daily', function (Blueprint $table) {
+            $table->text('type')->nullable();
+            $table->integer('timestamp')->nullable();
+            $table->integer('value')->nullable();
+        });
     }
 
     /**
@@ -25,6 +27,6 @@ class Daily extends Migration
      */
     public function down()
     {
-        Schema::drop('daily')
+        Schema::drop('daily');
     }
 }
