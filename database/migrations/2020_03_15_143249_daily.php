@@ -13,11 +13,9 @@ class Daily extends Migration
      */
     public function up()
     {
-        $table->bigIncrements('id');
-        $table->string('type')->nullable();
+        $table->text('type')->nullable();
         $table->integer('timestamp')->nullable();
         $table->integer('value')->nullable();
-        $table->integer('instance')->nullable();
     }
 
     /**
