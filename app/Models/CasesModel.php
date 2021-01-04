@@ -3,6 +3,7 @@
 namespace Covid\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class CasesModel extends Model
 {
@@ -19,17 +20,24 @@ class CasesModel extends Model
     }
 
     public function getCountries() {
+        $pm = new PopulationModel;
+
         $latest = CasesModel::select('timestamp')
             ->orderBy('timestamp', 'DESC')
             ->limit(1)
             ->get()[0]['timestamp'];
 
-        $v = CasesModel::select('country', 'confirmed', 'deaths',
+        $v = DB::table('cases')
+            ->select('population.population', 'country',
+            'confirmed', 'deaths',
             'new_confirmed', 'new_deaths', 'recovered', 'new_recovered',
-            'cfr', 'new_confirmed_per', 'new_deaths_per', 'new_recovered_per',
+            'cfr', 'new_confirmed_per', 'new_deaths_per',
+            'new_recovered_per',
             'confirmed_per', 'deaths_per', 'recovered_per')
             ->orderBy('confirmed', 'DESC')
+            ->join('population', 'cases.country', '=', 'population.place')
             ->where('timestamp', '=', $latest)
+            ->where('population.type', '=', 0)
             ->get();
 
         return $v;
